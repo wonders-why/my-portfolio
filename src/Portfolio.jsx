@@ -277,7 +277,7 @@ export default function Portfolio({ mode = "professional" }) {
         >×</button>
         {[["about","About"],["projects","Projects"],["skills","Skills"],["contact","Contact"]].map(([id, label]) => (
           <button key={id} onClick={() => scrollTo(id)} style={{
-            fontFamily: headingFont, fontSize: "2.5rem", fontWeight: 600, color: activeSection === id ? accent : textPrimary,
+            fontFamily: headingFont, fontSize: "1.7rem", fontWeight: 600, color: activeSection === id ? accent : textPrimary,
             background: "none", border: "none", cursor: "pointer", textTransform: "uppercase", letterSpacing: "0.1em"
           }}>{label}</button>
         ))}
@@ -374,7 +374,7 @@ export default function Portfolio({ mode = "professional" }) {
               transition={{ duration: 0.9, delay: 0.4, ease: [0.16,1,0.3,1] }}
               style={{
                 fontFamily: headingFont, fontWeight: headingWeight, fontStyle: headingStyle,
-                fontSize: "clamp(2.8rem, 8vw, 6.5rem)",
+                fontSize: "clamp(2.1rem, 8vw, 6.5rem)",
                 lineHeight: 1.05, letterSpacing: "-0.02em",
                 color: textPrimary, marginBottom: "0.5rem",
                 textShadow: isFool ? "none" : `0 0 40px rgba(229, 231, 235, 0.15)`,
@@ -389,7 +389,7 @@ export default function Portfolio({ mode = "professional" }) {
               transition={{ duration: 0.9, delay: 0.5, ease: [0.16,1,0.3,1] }}
               style={{
                 fontFamily: bodyFont, fontWeight: isFool ? 400 : 500, fontStyle: isFool ? "italic" : "normal",
-                fontSize: "clamp(1.1rem, 4vw, 2rem)",
+                fontSize: "clamp(0.95rem, 4vw, 2rem)",
                 color: textSecondary, marginBottom: "1.8rem",
               }}
             >
@@ -400,7 +400,7 @@ export default function Portfolio({ mode = "professional" }) {
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.6, ease: [0.16,1,0.3,1] }}
               style={{
-                fontFamily: bodyFont, fontSize: "clamp(1.05rem, 4vw, 1.25rem)",
+                fontFamily: bodyFont, fontSize: isMobile ? "0.95rem" : "1.25rem",
                 lineHeight: 1.6, color: textSecondary, maxWidth: 540,
                 margin: isMobile ? "0 auto 3rem" : "0 0 3rem",
                 whiteSpace: "pre-line",
@@ -447,12 +447,12 @@ export default function Portfolio({ mode = "professional" }) {
             alignItems: "center" 
           }}>
             <Reveal delay={0.1}>
-              <p style={{ fontFamily: bodyFont, fontSize: isMobile ? "1.05rem" : "1.15rem", lineHeight: 1.8, color: textSecondary, marginBottom: "1.5rem" }}>
+              <p style={{ fontFamily: bodyFont, fontSize: isMobile ? "0.95rem" : "1.15rem", lineHeight: 1.8, color: textSecondary, marginBottom: "1.5rem" }}>
                 {isFool 
                    ? "I’m a builder driven by curiosity and instinct — what I call vibe coding. My approach is influenced by the archetype of The Fool: someone who explores, experiments, and creates without overthinking."
                    : "I am a third-year BCA student at Rayat Bahra University, driven by a deep technical curiosity to understand how intelligent systems work under the hood. My development philosophy centers on strong system architecture, clean abstraction boundaries, and writing reliable code."}
               </p>
-              <p style={{ fontFamily: bodyFont, fontSize: isMobile ? "1.05rem" : "1.15rem", lineHeight: 1.8, color: textSecondary, whiteSpace: "pre-line" }}>
+              <p style={{ fontFamily: bodyFont, fontSize: isMobile ? "0.95rem" : "1.15rem", lineHeight: 1.8, color: textSecondary, whiteSpace: "pre-line" }}>
                 {isFool 
                    ? "While others wait for certainty, I focus on execution — building real systems, testing ideas, and learning through action.\n\nI work across full-stack development, with a growing focus on backend systems and machine learning."
                    : "Whether it's deploying conversational AI agents, optimizing PostgreSQL schemas, or mapping algorithms to recommend anime, I focus on building software that genuinely delivers value and performance. Unhired and relentlessly leveling up."}
@@ -460,11 +460,11 @@ export default function Portfolio({ mode = "professional" }) {
             </Reveal>
 
             <Reveal delay={0.2}>
-              <div style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(auto-fit, minmax(200px, 1fr))" : "1fr", gap: "1.5rem" }}>
+              <div style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(auto-fit, minmax(140px, 1fr))" : "1fr", gap: "1rem" }}>
                 {currentStats.map((stat, i) => (
-                  <div key={i} style={{ padding: "1.5rem", background: "rgba(255,255,255,0.02)", borderRadius: 12, border: `1px solid ${border}` }}>
-                    <p style={{ fontFamily: headingFont, fontSize: stat.value.length > 20 ? "1.2rem" : "2rem", fontWeight: 700, color: textPrimary, marginBottom: "0.25rem", lineHeight: 1.3 }}>{stat.value}</p>
-                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase", color: textSecondary, fontWeight: 600 }}>{stat.label}</p>
+                  <div key={i} style={{ padding: isMobile ? "1.2rem" : "1.5rem", background: "rgba(255,255,255,0.02)", borderRadius: 12, border: `1px solid ${border}` }}>
+                    <p style={{ fontFamily: headingFont, fontSize: isMobile ? "1.4rem" : (stat.value.length > 20 ? "1.2rem" : "2rem"), fontWeight: 700, color: textPrimary, marginBottom: "0.25rem", lineHeight: 1.3 }}>{stat.value}</p>
+                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 10, letterSpacing: "0.1em", textTransform: "uppercase", color: textSecondary, fontWeight: 600 }}>{stat.label}</p>
                   </div>
                 ))}
               </div>
@@ -559,10 +559,12 @@ export default function Portfolio({ mode = "professional" }) {
         </Reveal>
         <Reveal delay={0.2}>
           <a href="mailto:deepakgariya987@gmail.com" style={{
-            fontFamily: headingFont, fontSize: isMobile ? "1.2rem" : "1.5rem", fontWeight: 600, 
+            fontFamily: headingFont, fontSize: isMobile ? "1rem" : "1.5rem", fontWeight: 600, 
             color: textPrimary, textDecoration: "none",
             borderBottom: `2px solid ${accent}`, paddingBottom: 6,
             display: "inline-block", transition: "all 0.3s",
+            wordBreak: isMobile ? "break-all" : "normal",
+            maxWidth: "100%",
           }}
           onMouseEnter={e => { e.currentTarget.style.color = accent; }}
           onMouseLeave={e => { e.currentTarget.style.color = textPrimary; }}
@@ -618,7 +620,7 @@ function SectionHeader({ label, heading, accent, isFool, headingFont, textPrimar
       }}>{label}</p>
       <h2 style={{
         fontFamily: headingFont, fontWeight: isFool ? 400 : 700, fontStyle: isFool ? "italic" : "normal",
-        fontSize: "clamp(2.5rem, 5vw, 4rem)", lineHeight: 1.1, letterSpacing: "-0.02em",
+        fontSize: "clamp(1.75rem, 5vw, 4rem)", lineHeight: 1.1, letterSpacing: "-0.02em",
         color: textPrimary, margin: 0,
       }}>{heading}</h2>
     </div>
@@ -692,7 +694,7 @@ function ProjectCard({ project, accent, highlight, bg2, border, textMuted, textS
       }}>{project.title}</h3>
 
       <p style={{ 
-        fontFamily: bodyFont, fontSize: isMobile ? "1rem" : "1.1rem", color: textSecondary, 
+        fontFamily: bodyFont, fontSize: isMobile ? "0.9rem" : "1.1rem", color: textSecondary, 
         lineHeight: 1.6, marginBottom: "2rem", flexGrow: 1 
       }}>{project.desc}</p>
 
@@ -755,11 +757,24 @@ function SkillGroup({ group, accent, border, textSecondary, textPrimary, bg, bod
         color: textPrimary, marginBottom: "2rem" 
       }}>{group.label}</p>
       
-      <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+      <div style={{ 
+        display: "flex", 
+        flexDirection: isMobile ? "row" : "column", 
+        flexWrap: isMobile ? "wrap" : "nowrap",
+        gap: isMobile ? "0.6rem" : "1rem" 
+      }}>
         {group.items.map(skill => (
-          <div key={skill} style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-            <div style={{ width: 6, height: 6, borderRadius: "50%", background: hv ? accent : border, transition: "background 0.3s" }} />
-            <span style={{ fontFamily: bodyFont, fontSize: isMobile ? "1rem" : "1.1rem", color: textSecondary }}>
+          <div key={skill} style={{ 
+            display: "flex", 
+            alignItems: "center", 
+            gap: isMobile ? "0.4rem" : "1rem",
+            background: isMobile ? "rgba(255,255,255,0.03)" : "none",
+            padding: isMobile ? "6px 12px" : "0",
+            borderRadius: isMobile ? "6px" : "0",
+            border: isMobile ? `1px solid ${border}` : "none"
+          }}>
+            {!isMobile && <div style={{ width: 6, height: 6, borderRadius: "50%", background: hv ? accent : border, transition: "background 0.3s" }} />}
+            <span style={{ fontFamily: bodyFont, fontSize: isMobile ? "0.85rem" : "1.1rem", color: textSecondary }}>
               {skill}
             </span>
           </div>
